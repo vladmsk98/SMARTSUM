@@ -1,0 +1,119 @@
+/* === ПЕРЕМЕННЫЕ CSS ДЛЯ ЦВЕТОВЫХ ТЕМ === */
+/* Основные переменные для тем */
+:root {
+  /* Светлая тема (по умолчанию) */
+  --bg-color: oklch(0.8442 0.0609 112.24); /* Цвет фона */
+  --text-color: oklch(0.1 0.01 220); /* Цвет текста */
+  --container-bg: white; /* Цвет фона контейнера */
+  --border-color: var(--text-color); /* Цвет границы */
+}
+/* Тёмная тема: переопределяем переменные */
+[data-theme="dark"] {
+  --bg-color: oklch(0.1 0.01 220); /* Цвет фона */
+  --text-color: oklch(0.8442 0.0609 112.24); /* Цвет текста */
+  --container-bg: #222; /* Темный фон контейнера */
+  --border-color: var(--text-color);
+}
+/* === ОСНОВНЫЕ СТИЛИ === */
+body {
+  background-color: var(--bg-color); /* Используем переменную для фона */
+  color: var(--text-color); /* Используем переменную для текста */
+  margin: 0; /* Убираем стандартные отступы браузера */
+  padding: 10px; /* Небольшой внутренний отступ */
+  font-family: -apple-system, BlinkMacSystemFont, 'Segoe UI', Roboto, sans-serif; /* Шрифт */
+  transition: background-color 0.3s ease, color 0.3s ease; /* Плавный переход цветов при смене темы */
+}
+.container {
+  max-width: 600px;
+  margin: auto;
+  background: var(--container-bg);
+  padding: 20px;
+  border-radius: 10px;
+  box-shadow: 3px 3px 10px rgba(0,0,0,0.1);
+  color: var(--text-color); /* Цвет текста внутри контейнера */
+}
+h1 {
+  text-align: center; /* Центрируем заголовок */
+  font-family: Consolas, monospace; /* Шрифт */
+  font-size: clamp(1.5rem, 4vw, 2.5em); /* Адаптивный размер шрифта */
+  margin: 1rem 0; /* Отступы сверху и снизу */
+  color: var(--text-color); /* Цвет заголовка */
+}
+p {
+  color: var(--text-color); /* Цвет текста параграфов */
+  font-size: 16px; /* Базовый размер */
+}
+#answer {
+  font-size: 18px;
+  font-weight: bold;
+  color: var(--text-color);
+  margin-top: 20px;
+}
+input, button {
+  margin: 10px;
+  padding: 10px;
+  font-size: 16px;
+  font-family: -apple-system, BlinkMacSystemFont, 'Segoe UI', Roboto, sans-serif; /* Единый шрифт */
+  border: 1px solid var(--border-color); /* Граница */
+  border-radius: 5px; /* Закругление */
+  background-color: var(--container-bg); /* Фон */
+  color: var(--text-color); /* Цвет текста */
+  transition: background-color 0.3s ease, color 0.3s ease, border-color 0.3s ease; /* Плавный переход */
+}
+button {
+  cursor: pointer;
+}
+button:hover {
+  background-color: var(--text-color);
+  color: var(--container-bg);
+}
+label {
+  color: var(--text-color);
+  display: block;
+  margin-top: 10px;
+}
+/* Кнопка переключения темы */
+.toggle-theme {
+  position: fixed; /* Фиксируем в углу */
+  top: 10px;
+  right: 10px;
+  background-color: transparent; /* Прозрачный фон */
+  border: 1px solid var(--text-color); /* Граница цвета текста */
+  border-radius: 5px; /* Закругление углов */
+  padding: 5px 10px; /* Внутренние отступы */
+  cursor: pointer; /* Курсор-указатель */
+  font-family: Consolas, monospace; /* Шрифт */
+  color: var(--text-color); /* Цвет текста */
+  transition: background-color 0.3s ease, color 0.3s ease; /* Плавный переход цветов */
+  z-index: 1000; /* Поверх других элементов */
+}
+/* === АДАПТИВНОСТЬ: МЕДИА-ЗАПРОСЫ === */
+/* Для экранов шириной до 600px */
+@media (max-width: 600px) {
+  body {
+    padding: 5px; /* Уменьшаем отступы */
+  }
+  h1 {
+    font-size: 1.5rem; /* Уменьшаем размер заголовка */
+  }
+  input, button, p, label {
+    font-size: 14px; /* Уменьшаем размер шрифта */
+  }
+  .toggle-theme {
+    font-size: 0.9em; /* Уменьшаем размер шрифта кнопки */
+    padding: 3px 6px; /* Уменьшаем отступы кнопки */
+  }
+}
+/* Для экранов шириной от 1200px */
+@media (min-width: 1200px) {
+  body {
+    padding: 20px; /* Увеличиваем отступы */
+  }
+  h1 {
+    font-size: 2.5rem; /* Увеличиваем размер заголовка */
+  }
+  .toggle-theme {
+    top: 20px;
+    right: 20px;
+  }
+}

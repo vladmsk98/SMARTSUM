@@ -1,0 +1,44 @@
+<!DOCTYPE html>
+<html lang="ru">
+<head>
+  <meta charset="UTF-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1.0"/>
+  <title>SmartSum-калькулятор</title>
+  <link rel="stylesheet" href="styles.css" />
+</head>
+<body>
+  <div class="container">
+    <h1>SmartSum-калькулятор</h1>
+    <p>Поддерживаемые операции: +, -, *, /, **, %</p>
+    <div id="input-section">
+      <input type="number" id="num1" placeholder="Первое число" step="any" />
+      <select id="operation">
+        <option value="+" selected>+</option>
+        <option value="-">-</option>
+        <option value="*">*</option>
+        <option value="/">/</option>
+        <option value="**">**</option>
+        <option value="%">%</option>
+      </select>
+      <input type="number" id="num2" placeholder="Второе число" step="any" />
+      <button id="calculate-btn">Вычислить</button>
+    </div>
+    <div id="result-section" style="display: none;">
+      <p id="result-text"></p>
+      <button id="new-calculation-btn">Новый расчёт</button>
+    </div>
+    <div id="error-section" style="display: none;">
+      <p id="error-text" style="color: red;"></p>
+      <button id="retry-btn">Повторить ввод</button>
+    </div>
+    <!-- Новый контейнер для истории -->
+    <div id="history-section" style="display: none;">
+      <h3>История:</h3>
+      <ul id="history-list"></ul>
+      <button id="clear-history-btn">Очистить историю</button>
+    </div>
+  </div>
+  <button class="toggle-theme" id="theme-toggle">Сменить тему</button>
+  <script src="script.js"></script>
+</body>
+</html>
